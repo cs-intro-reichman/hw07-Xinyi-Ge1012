@@ -19,17 +19,19 @@ public class HashTagTokenizer {
 	}
 	
 	public static boolean existInDictionary(String word, String []dictionary) {
-		for(int i = 0; i < dictionary.length; i++){
-			for(int j = 0; j < dictionary[i].length; j++){
-				if(dictionary[i].length == word.length){
-					if(word.charAt(j) == dictionary[i].charAt(j)){
+		int size = word.length();
+		for (int i = 0; i < dictionary.length; i++) {
+			if (size == dictionary[i].length()) {
+				for (int j = 0; j < size; j++) {
+					if (word.charAt(j) != dictionary[i].charAt(j)) {
+						break;
+					} else if (j == size - 1) {
 						return true;
-					} else {
-						return false;
 					}
 				}
 			}
 		}
+		return false;
 	}
 
 	public static void breakHashTag(String hashtag, String[] dictionary) {
@@ -42,7 +44,7 @@ public class HashTagTokenizer {
         int N = hashtag.length();
 
         for (int i = 1; i <= N; i++){
-			if(existInDictionary(hashtag.substring(0,i), dictionary)){
+          if(existInDictionary(hashtag.substring(0,i), dictionary)){
 				System.out.println(hashtag.substring(0, i));
 				N = i;
 				break;
