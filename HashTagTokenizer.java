@@ -11,11 +11,10 @@ public class HashTagTokenizer {
 	public static String[] readDictionary(String fileName) {
 		String[] dictionary = new String[3000];
 		In in = new In(fileName);
-		in.readString();
-		 for(int i = 0; i < dictionary.length; i++){
-		  String words = dictionary[i];
-	  }
-		return dictionary;
+		for (int i = 0; i < dictionary.length; i++) {
+			dictionary[i] = in.readString();
+		}
+		  return dictionary;
 	}
 	
 	public static boolean existInDictionary(String word, String []dictionary) {
